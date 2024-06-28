@@ -11,37 +11,41 @@ const testedAtom = atom((observer) => {
 	}, []);
 }, 'first');
 
-const TestComponent1 = () => {
-	const value = useAtomValue(testedAtom);
-	return <div>TestComponent1: {value}</div>
-}
+let testComponentRenderCount = 0;
 
-const TestComponent2 = () => {
+const TestComponent = () => {
 	const value = useAtomValue(testedAtom);
-	return <div>TestComponent2: {value}</div>
+	testComponentRenderCount++;
+	return <div>TestComponent: {value}</div>
 }
 
 const TestApp = () => {
 	return (
 		<QuantumRoot>
-			<TestComponent1 />
-			<TestComponent2 />
+			<TestComponent />
 		</QuantumRoot>
 	)
 }
 
 describe('core', () => {
-	it('two components', async () => {
+	it('no render same value', async () => {
 		const result = render(<TestApp />);
 
-		expect(result.getByText('TestComponent1: first')).toBeTruthy();
-		expect(result.getByText('TestComponent2: first')).toBeTruthy();
+		expect(result.getByText('TestComponent: first')).toBeTruthy();
+		expect(testComponentRenderCount).toBe(1);
 
 		act(() => {
 			repository.setValue('second');
 		});
 
-		expect(result.getByText('TestComponent1: second')).toBeTruthy();
-		expect(result.getByText('TestComponent2: second')).toBeTruthy();
+		expect(result.getByText('TestComponent: second')).toBeTruthy();
+		expect(testComponentRenderCount).toBe(2);
+
+		act(() => {
+			repository.setValue('second');
+		});
+
+		expect(result.getByText('TestComponent: second')).toBeTruthy();
+		expect(testComponentRenderCount).toBe(2);
 	});
 });
