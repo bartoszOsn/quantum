@@ -1,6 +1,6 @@
 import { Atom, AtomObserver } from './api/atom';
 import { Store } from './Store';
-import { Repository } from '../inner-utils/Repository';
+import { Repository } from '../inner-util/Repository';
 import { ATOM_EXECUTOR_SYMBOL, ATOM_ID_SYMBOL, ATOM_INITIAL_VALUE_SYMBOL } from './atom-symbols';
 
 export class StoreImpl extends Store {

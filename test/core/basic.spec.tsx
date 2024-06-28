@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { act, renderHook } from '@testing-library/react';
 import { atom, QuantumRoot, useAtomValue } from '../../src';
-import { Repository } from '../../src/inner-utils/Repository';
+import { Repository } from '../../src/inner-util/Repository';
 
 const Wrapper = ({children}: {children: ReactNode}) => {
 	return (
