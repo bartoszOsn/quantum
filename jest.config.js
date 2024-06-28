@@ -1,3 +1,6 @@
 module.exports = {
-	testEnvironment: "jsdom"
+	testEnvironment: "jsdom",
+	transform: {
+		".*": "./node_modules/babel-jest"
+	}
 };
