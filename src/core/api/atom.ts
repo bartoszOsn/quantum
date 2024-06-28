@@ -12,11 +12,11 @@ export interface Atom<T> {
 	readonly [ATOM_INITIAL_VALUE_SYMBOL]: T;
 }
 
-interface AtomObserver<T> {
+export interface AtomObserver<T> {
 	set(value: T): void;
 }
 
-function atom<T>(callback: (observer: AtomObserver<T>) => void, initialValue: T): Atom<T> {
+export function atom<T>(callback: (observer: AtomObserver<T>) => void, initialValue: T): Atom<T> {
 	const stringifiedId = `atom-${counter()}`;
 	const id = Symbol(stringifiedId);
 
