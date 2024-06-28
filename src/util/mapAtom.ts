@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 export function mapAtom<TIn, TOut>(initialAtom: Atom<TIn>, mapper: (value: TIn) => TOut): Atom<TOut> {
 	return atom((observer) => {
-		debugger;
 		const value = useAtomValue(initialAtom);
 
 		useEffect(() => {

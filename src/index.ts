@@ -3,3 +3,5 @@ export * from './core/api/useAtomValue';
 export * from './core/api/QuantumRoot';
 
 export * from './util/mapAtom';
+
+export * from './writable/writableAtom';
