@@ -15,7 +15,10 @@
 		"state"
 	],
 	"author": "Bartosz Osiński",
-	"repository": "https://github.com/bartoszOsn/quantum",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bartoszOsn/quantum.git"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"@babel/core": "^7.24.7",
