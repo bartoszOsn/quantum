@@ -1,5 +1,5 @@
 {
-	"name": "@quantum/quantum",
+	"name": "@bartoszosn/quantum",
 	"version": "0.0.1",
 	"description": "Yet another react state management library.",
 	"main": "dist/cjs/index.js",
@@ -15,6 +15,7 @@
 		"state"
 	],
 	"author": "Bartosz Osiński",
+	"repository": "https://github.com/bartoszOsn/quantum",
 	"license": "MIT",
 	"devDependencies": {
 		"@babel/core": "^7.24.7",
