@@ -1,6 +1,6 @@
+import { Repository } from '../inner-util/Repository';
 import { Atom, AtomObserver } from './api/atom';
 import { Store } from './Store';
-import { Repository } from '../inner-util/Repository';
 import { ATOM_EXECUTOR_SYMBOL, ATOM_ID_SYMBOL, ATOM_INITIAL_VALUE_SYMBOL } from './atom-symbols';
 
 export class StoreImpl extends Store {
@@ -9,12 +9,12 @@ export class StoreImpl extends Store {
 	private readonly subscribedAtoms: Repository<Array<Atom<unknown>>> = new Repository<Array<Atom<unknown>>>([]);
 	private readonly subscriberCount: WeakMap<Atom<unknown>, number> = new WeakMap();
 
-    getValue<T>(atom: Atom<T>): T {
-        const valueRepository = this.getValueRepository(atom);
+	getValue<T>(atom: Atom<T>): T {
+		const valueRepository = this.getValueRepository(atom);
 		return valueRepository.getValue();
-    }
+	}
 
-    subscribe<T>(atom: Atom<T>, listener: (value: T) => void): () => void {
+	subscribe<T>(atom: Atom<T>, listener: (value: T) => void): () => void {
 		const valueRepository = this.getValueRepository(atom);
 		const repositoryUnsub = valueRepository.subscribe(listener);
 		this.addToSubscribedAtoms(atom);
@@ -23,16 +23,16 @@ export class StoreImpl extends Store {
 			repositoryUnsub();
 			this.removeFromSubscribedAtoms(atom);
 		}
-    }
+	}
 
 
-    getSubscribedAtoms(): Array<Atom<unknown>> {
-        return this.subscribedAtoms.getValue();
-    }
+	getSubscribedAtoms(): Array<Atom<unknown>> {
+		return this.subscribedAtoms.getValue();
+	}
 
-    subscribeToSubscribedAtoms(listener: (atoms: Array<Atom<unknown>>) => void): () => void {
-        return this.subscribedAtoms.subscribe(listener);
-    }
+	subscribeToSubscribedAtoms(listener: (atoms: Array<Atom<unknown>>) => void): () => void {
+		return this.subscribedAtoms.subscribe(listener);
+	}
 
 
 	atomExecutorAsHook(atom: Atom<unknown>): () => void {

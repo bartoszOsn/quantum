@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { Store } from '../Store';
 import { StoreImpl } from '../StoreImpl';
 import { StoreContext } from '../StoreContext';

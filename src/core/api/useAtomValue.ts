@@ -1,6 +1,6 @@
-import { Atom } from './atom';
-import { useStore } from '../StoreContext';
 import { useCallback, useSyncExternalStore } from 'react';
+import { useStore } from '../StoreContext';
+import { Atom } from './atom';
 
 export function useAtomValue<T>(atom: Atom<T>): T {
 	const store = useStore();

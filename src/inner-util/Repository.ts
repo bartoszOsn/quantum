@@ -6,7 +6,7 @@ export class Repository<T> {
 		this.value = value;
 	}
 
-	setValue(value: T) {
+	setValue(value: T): void {
 		this.value = value;
 		this.listeners.forEach(listener => listener(value));
 	}

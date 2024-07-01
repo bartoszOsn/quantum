@@ -1,5 +1,5 @@
-import { atom, Atom, AtomObserver } from '../core/api/atom';
 import { useEffect, useRef } from 'react';
+import { atom, Atom, AtomObserver } from '../core/api/atom';
 import { mapAtom } from '../util/mapAtom';
 
 export interface WritableAtom<T> extends Atom<T> {
@@ -7,7 +7,7 @@ export interface WritableAtom<T> extends Atom<T> {
 }
 
 export function writableAtom<T>(initialValue: T): WritableAtom<T> {
-	const initialObserver: AtomObserver<T> & { value: T | null, setValueAtLeastOnce: boolean } = {
+	const initialObserver: AtomObserver<T> & { value: T | null; setValueAtLeastOnce: boolean } = {
 		set: (value: T) => {
 			initialObserver.value = value;
 			initialObserver.setValueAtLeastOnce = true;
@@ -16,12 +16,12 @@ export function writableAtom<T>(initialValue: T): WritableAtom<T> {
 		setValueAtLeastOnce: false
 	};
 
-	const protoAtom = atom<{ observer: AtomObserver<T>, value: T}>(protoSubscriber => {
+	const protoAtom = atom<{ observer: AtomObserver<T>; value: T}>(protoSubscriber => {
 		const initializedRef = useRef(false);
 
 		function setValue(value: T): void {
 			protoSubscriber.set({
-				value: value,
+				value,
 				observer: {
 					set: setValue
 				}

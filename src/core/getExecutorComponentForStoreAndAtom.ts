@@ -1,6 +1,6 @@
+import { ReactNode } from 'react';
 import { Store } from './Store';
 import { Atom } from './api/atom';
-import { ReactNode } from 'react';
 
 const map: Map<Store, Map<Atom<unknown>, () => ReactNode>> = new Map();
 
