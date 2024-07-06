@@ -3,7 +3,11 @@ import { getExportedFromLib } from './util/getExportedFromLib.mjs';
 const exportedFromLib = getExportedFromLib();
 
 export const tsdocRequired = {
-	meta: {},
+	meta: {
+		docs: {
+			description: 'Require TSDoc comments for exported members'
+		}
+	},
 	create(context) {
 		const exportedAll = exportedFromLib.exportAllFiles.some((file) => context.filename.startsWith(file + '.'));
 		const exportedNamed = exportedFromLib.exportNamed.find((file) => context.filename.startsWith(file.file + '.'));

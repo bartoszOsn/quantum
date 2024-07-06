@@ -2,6 +2,7 @@ import globals from 'globals';
 import { parser as TsEslintParser, plugin as TsEslintPlugin } from 'typescript-eslint';
 import ImportPlugin from 'eslint-plugin-import';
 import { CustomRulesPlugin } from './eslint-rules/index.mjs';
+import { apiFolderExport } from './eslint-rules/api-folder-export.mjs';
 
 export default [
 	{
@@ -62,7 +63,8 @@ export default [
 			'eol-last': ["error", "always"],
 			'max-len': ['error', {'code': 160}],
 			'no-trailing-spaces': 'error',
-			'CustomRulesPlugin/tsdocRequired': 'warn'
+			'CustomRulesPlugin/tsdocRequired': 'warn',
+			'CustomRulesPlugin/apiFolderExport': 'error'
 		}
 	}
 ];
