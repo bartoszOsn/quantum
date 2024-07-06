@@ -1,9 +1,7 @@
 import globals from 'globals';
-import { plugin as TsEslintPlugin, parser as TsEslintParser } from 'typescript-eslint';
+import { parser as TsEslintParser, plugin as TsEslintPlugin } from 'typescript-eslint';
 import ImportPlugin from 'eslint-plugin-import';
-import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
-import { fixupConfigRules } from '@eslint/compat';
-
+import { CustomRulesPlugin } from './eslint-rules/index.mjs';
 
 export default [
 	{
@@ -18,7 +16,8 @@ export default [
 		},
 		plugins: {
 			'@typescript-eslint': TsEslintPlugin,
-			import: ImportPlugin
+			import: ImportPlugin,
+			CustomRulesPlugin
 		},
 		rules: {
 			"@typescript-eslint/array-type": [
@@ -62,7 +61,8 @@ export default [
 			'@typescript-eslint/space-infix-ops': 'error',
 			'eol-last': ["error", "always"],
 			'max-len': ['error', {'code': 160}],
-			'no-trailing-spaces': 'error'
+			'no-trailing-spaces': 'error',
+			'CustomRulesPlugin/tsdocRequired': 'warn'
 		}
 	}
 ];
